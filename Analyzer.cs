@@ -46,7 +46,7 @@ namespace CountLetters
                         count++;
                     }
                 }
-                RuSymbols.Add(symbol, count); // я ебал это, не понятно. Ошибка: "An item with the same key has already been added. Key"                                                                               
+                if(symbol != '\0')RuSymbols.Add(symbol, count); // я ебал это, не понятно. Ошибка: "An item with the same key has already been added. Key"                                                                               
             }                                 // под ошибкой я понимаю, что ключ дублируется. но блять, как? 
         }
 
@@ -62,7 +62,7 @@ namespace CountLetters
                         count++;
                     }
                 }
-                EuSymbols.Add(symbol, count);
+                if (symbol != '\0') EuSymbols.Add(symbol, count);
             }
         }
 

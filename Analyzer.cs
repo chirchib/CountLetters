@@ -9,28 +9,27 @@ namespace CountLetters
         private char[] EuABC = new char[26];
         private char[] RuABC = new char[33];
         private char[] ExstraSym = new char[1]; // цифры, символы, пробелы и тд
-        private Dictionary<char, int> RuSymbols = new Dictionary<char, int>();
-        private Dictionary<char, int> EuSymbols = new Dictionary<char, int>();
-        private Dictionary<char, int> ExstraSymbols = new Dictionary<char, int>(); // цифры, символы, пробелы и тд
-        public string Str
-        {
-            get
-            {
-                return Str;
-            }
-            set
-            {
-                Str = value.ToUpper();
-            }
-        }
-
-        public Analyzer()
+        private void InitABC()
         {
             string strRuABC = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
             string strEuABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             char[] RuABC = strRuABC.ToCharArray();
             char[] EuABC = strEuABC.ToCharArray();
+        }
+        private Dictionary<char, int> RuSymbols = new Dictionary<char, int>();
+        private Dictionary<char, int> EuSymbols = new Dictionary<char, int>();
+        private Dictionary<char, int> ExstraSymbols = new Dictionary<char, int>(); // цифры, символы, пробелы и тд
+        private string Str;
 
+        public Analyzer(string str)
+        {
+            Str = str.ToUpper();
+            this.InitABC();
+            this.Counter();
+        }
+
+        private void Counter()
+        {          
             CounterEveryRuSymbol();
             CounterEveryEuSymbol();
         }
@@ -47,8 +46,8 @@ namespace CountLetters
                         count++;
                     }
                 }
-                RuSymbols.Add(symbol, count);
-            }
+                RuSymbols.Add(symbol, count); // я ебал это, не понятно. Ошибка: "An item with the same key has already been added. Key"                                                                               
+            }                                 // под ошибкой я понимаю, что ключ дублируется. но блять, как? 
         }
 
         private void CounterEveryEuSymbol()

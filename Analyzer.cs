@@ -9,14 +9,26 @@ namespace CountLetters
         private char[] EuABC = new char[26];
         private char[] RuABC = new char[33];
         private char[] ExstraSym = new char[1]; // цифры, символы, пробелы и тд
+
+        // инициализация массивов с анг/рус буквами и инициализация ключей в словарях
         private void InitABC()
         {
             string strRuABC = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
             string strEuABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             char[] RuABC = strRuABC.ToCharArray();
             char[] EuABC = strEuABC.ToCharArray();
+
+            foreach (char symbol in RuABC)
+            {
+                RuSymbols.Add(symbol, 0);
+            }
+            foreach (char symbol in EuABC)
+            {
+                EuSymbols.Add(symbol, 0);
+            }
         }
-        private Dictionary<char, int> RuSymbols = new Dictionary<char, int>();
+
+        private Dictionary<char, int> RuSymbols = new Dictionary<char, int>(); 
         private Dictionary<char, int> EuSymbols = new Dictionary<char, int>();
         private Dictionary<char, int> ExstraSymbols = new Dictionary<char, int>(); // цифры, символы, пробелы и тд
         private string Str;
@@ -28,74 +40,64 @@ namespace CountLetters
             this.Counter();
         }
 
+        // Заполнение словарей
         private void Counter()
-        {          
+        {
             CounterEveryRuSymbol();
             CounterEveryEuSymbol();
         }
-
         private void CounterEveryRuSymbol()
         {
-            foreach (char symbol in RuABC)
+            for (int i = 0; i < Str.Length; i++)
             {
-                int count = 0;
-                for (int i = 0; i < Str.Length; i++)
+                try
                 {
-                    if (symbol == Str[i])
-                    {
-                        count++;
-                    }
+                    RuSymbols[Str[i]]++;
                 }
-                RuSymbols.Add(symbol, count); // я ебал это, не понятно. Ошибка: "An item with the same key has already been added. Key"                                                                               
-            }                                 // под ошибкой я понимаю, что ключ дублируется. но блять, как? 
+                catch
+                {
+                    continue;
+                }
+            }
         }
-
         private void CounterEveryEuSymbol()
         {
-            foreach (char symbol in EuABC)
+            for (int i = 0; i < Str.Length; i++)
             {
-                int count = 0;
-                for (int i = 0; i < Str.Length; i++)
+                try
                 {
-                    if (symbol == Str[i])
-                    {
-                        count++;
-                    }
+                    EuSymbols[Str[i]]++;
                 }
-                EuSymbols.Add(symbol, count);
+                catch
+                {
+                    continue;
+                }
             }
         }
 
-        private int EuCounter
+        // возвращает количество английских букв
+        public int EuCounter() 
         {
-            get
+            int EuCounter = 0;
+            foreach (char symbol in EuSymbols.Keys)
             {
-                return EuCounter;
+                EuCounter += EuSymbols[symbol];
             }
-            set
-            {
-                foreach (char symbol in EuSymbols.Keys)
-                {
-                    EuCounter += EuSymbols[symbol];
-                }
-            }
-        }
-
-        private int RuCounter
+            return EuCounter;
+        } 
+        
+        // возвращает количество русских букв
+        public int RuCounter() 
         {
-            get
+            int RuCounter = 0;
+            foreach (char symbol in RuSymbols.Keys)
             {
-                return RuCounter;
+                RuCounter += RuSymbols[symbol];
             }
-            set
-            {
-                foreach (char symbol in RuSymbols.Keys)
-                {
-                    RuCounter += RuSymbols[symbol];
-                }
-            }
-        }
+            return RuCounter;
+        }  
 
+        // выводит русские буквы и количество каждой в строке
         public void DisplayCountersRuABC()
         {
             foreach (char symbol in RuSymbols.Keys)
@@ -104,6 +106,7 @@ namespace CountLetters
             }
         }
 
+        // выводит английские буквы и кол-во каждой в строке
         public void DisplayCountersEuABC()
         {
             foreach (char symbol in EuSymbols.Keys)
@@ -112,6 +115,7 @@ namespace CountLetters
             }
         }
 
+        // выводит рус буквы с их вероятностью в строке
         public void DisplayProbabilityRuABC()
         {
             double probably;
@@ -122,6 +126,7 @@ namespace CountLetters
             }
         }
 
+        // выводит анг буквы с их вероятностью в строке
         public void DisplayProbabilityEuABC()
         {
             double probably;

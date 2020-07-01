@@ -37,43 +37,24 @@ namespace CountLetters
         {
             Str = str.ToUpper();
             this.InitABC();
-            this.Counter();
+            this.CounterEverySymbol();
         }
 
         // Заполнение словарей
-        private void Counter()
-        {
-            CounterEveryRuSymbol();
-            CounterEveryEuSymbol();
-        }
-        private void CounterEveryRuSymbol()
+        private void CounterEverySymbol()
         {
             for (int i = 0; i < Str.Length; i++)
             {
-                try
+                if (1040 <= Convert.ToInt32(Str[i]) && Convert.ToInt32(Str[i]) <= 1071)
                 {
                     RuSymbols[Str[i]]++;
                 }
-                catch
-                {
-                    continue;
-                }
-            }
-        }
-        private void CounterEveryEuSymbol()
-        {
-            for (int i = 0; i < Str.Length; i++)
-            {
-                try
+                else if (65 <= Convert.ToInt32(Str[i]) && Convert.ToInt32(Str[i]) <= 90)
                 {
                     EuSymbols[Str[i]]++;
                 }
-                catch
-                {
-                    continue;
-                }
             }
-        }
+        }       
 
         // возвращает количество английских букв
         public int EuCounter()

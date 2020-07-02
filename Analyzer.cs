@@ -78,44 +78,30 @@ namespace CountLetters
             return RuCounter;
         }
 
-        // выводит русские буквы и количество каждой в строке
-        public void DisplayCountersRuABC()
+        // возвращает по ключу строку в виде  symbol.ToString() + "-" + RuSymbols[symbol].ToString()
+        public string DisplayCountersRuABC(char symbol)
         {
-            foreach (char symbol in RuSymbols.Keys)
-            {
-                Console.WriteLine("{0} - {1}\t", symbol.ToString(), RuSymbols[symbol].ToString());
-            }
+            return symbol.ToString() + " - " + RuSymbols[symbol].ToString();
         }
 
-        // выводит английские буквы и кол-во каждой в строке
-        public void DisplayCountersEuABC()
+        // возвращает по ключу строку в виде  symbol.ToString() + " - " + EuSymbols[symbol].ToString()
+        public string DisplayCountersEuABC(char symbol)
         {
-            foreach (char symbol in EuSymbols.Keys)
-            {
-                Console.WriteLine("{0} - {1}\t", symbol.ToString(), EuSymbols[symbol].ToString());
-            }
+            return symbol.ToString() + " - " + EuSymbols[symbol].ToString();
         }
 
-        // выводит рус буквы с их вероятностью в строке
-        public void DisplayProbabilityRuABC()
+        // возвращает по ключу строку в виду
+        public string DisplayProbabilityRuABC(char symbol)
         {
-            double probably;
-            foreach (char symbol in RuSymbols.Keys)
-            {
-                probably = RuSymbols[symbol] * 100 / Str.Length;
-                Console.WriteLine("Вероятность {0} равна: {1}%", symbol.ToString(), probably.ToString());
-            }
+            double probably = RuSymbols[symbol] * 100 / Str.Length;
+            return "Вероятность" + symbol + "равна: " + probably.ToString() + "%";
         }
 
         // выводит анг буквы с их вероятностью в строке
-        public void DisplayProbabilityEuABC()
+        public string DisplayProbabilityEuABC(char symbol)
         {
-            double probably;
-            foreach (char symbol in EuSymbols.Keys)
-            {
-                probably = EuSymbols[symbol] * 100 / Str.Length;
-                Console.WriteLine("Вероятность {0} равна: {1}%", symbol.ToString(), probably.ToString());
-            }
+            double probably = EuSymbols[symbol] * 100 / Str.Length;
+            return "Вероятность" + symbol + "равна: " + probably.ToString() + "%";
         }
     }
 }

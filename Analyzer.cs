@@ -78,30 +78,30 @@ namespace CountLetters
             return RuCounter;
         }
 
-        // возвращает по ключу строку в виде  symbol.ToString() + "-" + RuSymbols[symbol].ToString()
-        public string DisplayCountersRuABC(char symbol)
+        // возвращает строку но номеру буквы в алфавите  
+        public string DisplayCountersRuABC(int index)
         {
-            return symbol.ToString() + " - " + RuSymbols[symbol].ToString();
+            return RuABC[index].ToString() + " - " + RuSymbols[RuABC[index]].ToString();
         }
 
         // возвращает по ключу строку в виде  symbol.ToString() + " - " + EuSymbols[symbol].ToString()
-        public string DisplayCountersEuABC(char symbol)
+        public string DisplayCountersEuABC(int index)
         {
-            return symbol.ToString() + " - " + EuSymbols[symbol].ToString();
+            return EuABC[index].ToString() + " - " + EuSymbols[EuABC[index]].ToString();
         }
 
         // возвращает по ключу строку в виду
-        public string DisplayProbabilityRuABC(char symbol)
+        public string DisplayProbabilityRuABC(int index)
         {
-            double probably = RuSymbols[symbol] * 100 / Str.Length;
-            return "Вероятность" + symbol + "равна: " + probably.ToString() + "%";
+            double probably = RuSymbols[RuABC[index]] * 100 / Str.Length;
+            return "Вероятность" + RuABC[index] + "равна: " + probably.ToString() + "%";
         }
 
         // выводит анг буквы с их вероятностью в строке
-        public string DisplayProbabilityEuABC(char symbol)
+        public string DisplayProbabilityEuABC(int index)
         {
-            double probably = EuSymbols[symbol] * 100 / Str.Length;
-            return "Вероятность" + symbol + "равна: " + probably.ToString() + "%";
+            double probably = EuSymbols[EuABC[index]] * 100 / Str.Length;
+            return "Вероятность" + EuABC[index] + "равна: " + probably.ToString() + "%";
         }
     }
 }

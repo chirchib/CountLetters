@@ -7,7 +7,9 @@ namespace CountLetters
     {
         static void Main(string[] args)
         {
-            Analyzer analyzer = new Analyzer(Console.ReadLine());
+            string text = "Abcde abcdertwet wfsdf";
+            Analyzer analyzer = new Analyzer(text);
+            analyzer.DisplayCountersEuABC(1);
         }
     }
 }

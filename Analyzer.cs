@@ -21,16 +21,22 @@ namespace CountLetters
             foreach (char symbol in RuABC)
             {
                 RuSymbols.Add(symbol, 0);
+                ProbabilityRuSymblos.Add(symbol, 0);
             }
             foreach (char symbol in EuABC)
             {
                 EuSymbols.Add(symbol, 0);
+                ProbabilityEuSymblos.Add(symbol, 0);
             }
         }
 
         private Dictionary<char, int> RuSymbols = new Dictionary<char, int>();
         private Dictionary<char, int> EuSymbols = new Dictionary<char, int>();
         private Dictionary<char, int> ExstraSymbols = new Dictionary<char, int>(); // цифры, символы, пробелы и тд
+
+        private Dictionary<char, double> ProbabilityRuSymblos = new Dictionary<char, double>();
+        private Dictionary<char, double> ProbabilityEuSymblos = new Dictionary<char, double>();
+
         private string Str;
 
         public Analyzer(string str)
@@ -38,6 +44,7 @@ namespace CountLetters
             Str = str.ToUpper();
             this.InitABC();
             this.CounterEverySymbol();
+            this.CounterProbability();
         }
 
         // Заполнение словарей
@@ -78,30 +85,43 @@ namespace CountLetters
             return RuCounter;
         }
 
-        // возвращает строку но номеру буквы в алфавите  
-        public string DisplayCountersRuABC(int index)
+        // возвращает словарь с русскими символами
+        public Dictionary<char, int> DisplayRuDictionary()
         {
-            return RuABC[index].ToString() + " - " + RuSymbols[RuABC[index]].ToString();
+            return RuSymbols;
         }
 
-        // возвращает по ключу строку в виде  symbol.ToString() + " - " + EuSymbols[symbol].ToString()
-        public string DisplayCountersEuABC(int index)
+        // возвращает словарь с англ символами
+        public Dictionary<char, int> DisplayEuDictionary()
         {
-            return EuABC[index].ToString() + " - " + EuSymbols[EuABC[index]].ToString();
+            return EuSymbols;
         }
 
-        // возвращает по ключу строку в виду
-        public string DisplayProbabilityRuABC(int index)
+        private void CounterProbability()
         {
-            double probably = RuSymbols[RuABC[index]] * 100 / Str.Length;
-            return "Вероятность" + RuABC[index] + "равна: " + probably.ToString() + "%";
+            for (int i = 0; i < Str.Length; i++)
+            {
+                if (1040 <= Convert.ToInt32(Str[i]) && Convert.ToInt32(Str[i]) <= 1071)
+                {
+                    ProbabilityRuSymblos[Str[i]] = RuSymbols[Str[i]] * 100 / RuCounter();
+                }
+                else if (65 <= Convert.ToInt32(Str[i]) && Convert.ToInt32(Str[i]) <= 90)
+                {
+                    ProbabilityEuSymblos[Str[i]] = EuSymbols[Str[i]] * 100 / EuCounter();
+                }
+            }
         }
 
-        // выводит анг буквы с их вероятностью в строке
-        public string DisplayProbabilityEuABC(int index)
+        // возвращает словарь с ру символами
+        public Dictionary<char,double> DisplayProbabilityRuSymbols()
         {
-            double probably = EuSymbols[EuABC[index]] * 100 / Str.Length;
-            return "Вероятность" + EuABC[index] + "равна: " + probably.ToString() + "%";
+            return ProbabilityRuSymblos;
+        }
+
+        // возвращает словарь с англ символами
+        public Dictionary<char, double> DisplayProbabilityEuSymbols()
+        {
+            return ProbabilityEuSymblos;
         }
     }
 }

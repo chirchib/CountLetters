@@ -93,8 +93,7 @@ namespace CountLetters
             return RuSymbols;
         }
 
-        //TODO Preferably change functions to property
-        // example: private Dictionary<char, int> EuSymbols {private set; public get}
+        //TODO Preferably change functions to property example: private Dictionary<char, int> EuSymbols {private set; public get}
 
 
         // возвращает словарь с англ символами

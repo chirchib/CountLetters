@@ -86,10 +86,16 @@ namespace CountLetters
         }
 
         // возвращает словарь с русскими символами
+        //TODO remove phrase "Display" from functions names
+        
         public Dictionary<char, int> DisplayRuDictionary()
         {
             return RuSymbols;
         }
+
+        //TODO Preferably change functions to property
+        // example: private Dictionary<char, int> EuSymbols {private set; public get}
+
 
         // возвращает словарь с англ символами
         public Dictionary<char, int> DisplayEuDictionary()
@@ -113,6 +119,7 @@ namespace CountLetters
         }
 
         // возвращает словарь с ру символами
+        //TODO fix return value DisplayProbabilityRuSymbols from int to double
         public Dictionary<char,double> DisplayProbabilityRuSymbols()
         {
             return ProbabilityRuSymblos;

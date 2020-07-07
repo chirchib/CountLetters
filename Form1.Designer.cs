@@ -32,9 +32,7 @@
             this.panelInputRichTextBox = new System.Windows.Forms.Panel();
             this.richTextBoxInput = new System.Windows.Forms.RichTextBox();
             this.panelOutputRichTextBox = new System.Windows.Forms.Panel();
-            this.richTextBoxOutput = new System.Windows.Forms.RichTextBox();
-            this.panelButtonAnalizeText = new System.Windows.Forms.Panel();
-            this.buttonAnalizeText = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButtonRus = new System.Windows.Forms.RadioButton();
             this.radioButtonEng = new System.Windows.Forms.RadioButton();
@@ -42,7 +40,7 @@
             this.buttonOpenFileDialog = new System.Windows.Forms.Button();
             this.panelInputRichTextBox.SuspendLayout();
             this.panelOutputRichTextBox.SuspendLayout();
-            this.panelButtonAnalizeText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +58,7 @@
             this.panelInputRichTextBox.Controls.Add(this.richTextBoxInput);
             this.panelInputRichTextBox.Location = new System.Drawing.Point(12, 12);
             this.panelInputRichTextBox.Name = "panelInputRichTextBox";
-            this.panelInputRichTextBox.Size = new System.Drawing.Size(550, 200);
+            this.panelInputRichTextBox.Size = new System.Drawing.Size(508, 287);
             this.panelInputRichTextBox.TabIndex = 0;
             // 
             // richTextBoxInput
@@ -68,7 +66,7 @@
             this.richTextBoxInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxInput.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxInput.Name = "richTextBoxInput";
-            this.richTextBoxInput.Size = new System.Drawing.Size(550, 200);
+            this.richTextBoxInput.Size = new System.Drawing.Size(508, 287);
             this.richTextBoxInput.TabIndex = 0;
             this.richTextBoxInput.Text = "";
             // 
@@ -78,44 +76,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelOutputRichTextBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelOutputRichTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.panelOutputRichTextBox.Controls.Add(this.richTextBoxOutput);
-            this.panelOutputRichTextBox.Location = new System.Drawing.Point(12, 254);
+            this.panelOutputRichTextBox.Controls.Add(this.dataGridView1);
+            this.panelOutputRichTextBox.Location = new System.Drawing.Point(12, 341);
             this.panelOutputRichTextBox.Name = "panelOutputRichTextBox";
-            this.panelOutputRichTextBox.Size = new System.Drawing.Size(550, 151);
+            this.panelOutputRichTextBox.Size = new System.Drawing.Size(508, 300);
             this.panelOutputRichTextBox.TabIndex = 2;
             // 
-            // richTextBoxOutput
+            // dataGridView1
             // 
-            this.richTextBoxOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxOutput.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxOutput.Name = "richTextBoxOutput";
-            this.richTextBoxOutput.ReadOnly = true;
-            this.richTextBoxOutput.Size = new System.Drawing.Size(550, 151);
-            this.richTextBoxOutput.TabIndex = 0;
-            this.richTextBoxOutput.Text = "";
-            // 
-            // panelButtonAnalizeText
-            // 
-            this.panelButtonAnalizeText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelButtonAnalizeText.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelButtonAnalizeText.BackColor = System.Drawing.Color.Orange;
-            this.panelButtonAnalizeText.Controls.Add(this.buttonAnalizeText);
-            this.panelButtonAnalizeText.Location = new System.Drawing.Point(12, 411);
-            this.panelButtonAnalizeText.Name = "panelButtonAnalizeText";
-            this.panelButtonAnalizeText.Size = new System.Drawing.Size(550, 42);
-            this.panelButtonAnalizeText.TabIndex = 3;
-            // 
-            // buttonAnalizeText
-            // 
-            this.buttonAnalizeText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAnalizeText.Location = new System.Drawing.Point(0, 0);
-            this.buttonAnalizeText.Name = "buttonAnalizeText";
-            this.buttonAnalizeText.Size = new System.Drawing.Size(550, 42);
-            this.buttonAnalizeText.TabIndex = 0;
-            this.buttonAnalizeText.Text = "Анализ";
-            this.buttonAnalizeText.UseVisualStyleBackColor = true;
-            this.buttonAnalizeText.Click += new System.EventHandler(this.buttonAnalizeText_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(502, 294);
+            this.dataGridView1.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -125,9 +101,9 @@
             this.flowLayoutPanel1.Controls.Add(this.radioButtonEng);
             this.flowLayoutPanel1.Controls.Add(this.checkBox1);
             this.flowLayoutPanel1.Controls.Add(this.buttonOpenFileDialog);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 218);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 305);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(550, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(508, 30);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // radioButtonRus
@@ -138,9 +114,9 @@
             this.radioButtonRus.Name = "radioButtonRus";
             this.radioButtonRus.Size = new System.Drawing.Size(104, 25);
             this.radioButtonRus.TabIndex = 0;
-            this.radioButtonRus.TabStop = true;
             this.radioButtonRus.Text = "Русский язык";
             this.radioButtonRus.UseVisualStyleBackColor = true;
+            this.radioButtonRus.CheckedChanged += new System.EventHandler(this.radioButtonRus_CheckedChanged);
             // 
             // radioButtonEng
             // 
@@ -150,9 +126,9 @@
             this.radioButtonEng.Name = "radioButtonEng";
             this.radioButtonEng.Size = new System.Drawing.Size(119, 25);
             this.radioButtonEng.TabIndex = 1;
-            this.radioButtonEng.TabStop = true;
             this.radioButtonEng.Text = "Английкий язык";
             this.radioButtonEng.UseVisualStyleBackColor = true;
+            this.radioButtonEng.CheckedChanged += new System.EventHandler(this.radioButtonEng_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -180,17 +156,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 465);
+            this.ClientSize = new System.Drawing.Size(532, 653);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.panelButtonAnalizeText);
             this.Controls.Add(this.panelOutputRichTextBox);
             this.Controls.Add(this.panelInputRichTextBox);
-            this.MinimumSize = new System.Drawing.Size(592, 512);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelInputRichTextBox.ResumeLayout(false);
             this.panelOutputRichTextBox.ResumeLayout(false);
-            this.panelButtonAnalizeText.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -201,15 +176,13 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Panel panelInputRichTextBox;
         private System.Windows.Forms.Panel panelOutputRichTextBox;
-        private System.Windows.Forms.Panel panelButtonAnalizeText;
         private System.Windows.Forms.RichTextBox richTextBoxInput;
-        private System.Windows.Forms.Button buttonAnalizeText;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.RadioButton radioButtonRus;
         private System.Windows.Forms.RadioButton radioButtonEng;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button buttonOpenFileDialog;
-        private System.Windows.Forms.RichTextBox richTextBoxOutput;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

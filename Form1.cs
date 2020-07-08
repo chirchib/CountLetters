@@ -203,8 +203,5 @@ namespace TextAnalizer_v0._2
                 radioButtonRus.Checked = true;
             }
         }
-
-
-        Analyzer analyzer;
     }
 }

@@ -174,16 +174,19 @@ namespace TextAnalizer_v0._2
         private void uTF8ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.UTF8);
+            radioButtonRus_CheckedChanged(this, e);
         }
 
         private void windows1251ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.GetEncoding(1251));
+            radioButtonRus_CheckedChanged(this, e);
         }
 
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.Default);
+            radioButtonRus_CheckedChanged(this, e);
         }
         private string fileName = "test.txt";
 

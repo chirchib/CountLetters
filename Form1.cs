@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,11 @@ namespace TextAnalizer_v0._2
             InitializeComponent();
             SetupInputText();
             SetupDataGridView(Language.None);
-            
+
+            byte[] buff = Encoding.UTF8.GetBytes("Тестовая stroka");
+
+            Encoding enc1 = Encoding.ASCII;
+            Encoding enc2 = Encoding.Unicode;
         }
 
 
@@ -43,7 +48,6 @@ namespace TextAnalizer_v0._2
                 " уставом от 1884 года упразднялась вся автономия университетов.Профессора и сам ректор назначались правительством, а плата за обучение была поднята в два раза. Кроме того, была " +
                 "сформирована специальная инспекция, которая осуществляла надзор за учащимися.";
         }
-
         private void SetupDataGridViewNone()
         {
             dataGridView1.ColumnCount = 3;
@@ -61,13 +65,9 @@ namespace TextAnalizer_v0._2
             dataGridView1.Columns[1].Name = "Количество";
             dataGridView1.Columns[2].Name = "Частота";
         }
-
         private void SetupDataGridViewRussian()
         {
-
-
             dataGridView1.Name = "Английский алфавит";
-
 
             string inputText = richTextBoxInput.Text;
             Analyzer analyzer = new Analyzer(inputText);
@@ -86,12 +86,7 @@ namespace TextAnalizer_v0._2
                 dataGridView1.Rows[index].Cells[2].Value = prop;
                 index++;
             }
-
-
-
-
         }
-
         private void SetupDataGridViewEnglish()
         {
 
@@ -119,9 +114,6 @@ namespace TextAnalizer_v0._2
                 index++;
             }
         }
-
-
-
         private void SetupDataGridView(Language language)
         {
             switch (language)
@@ -141,10 +133,8 @@ namespace TextAnalizer_v0._2
             }
 
         }
-
         private void buttonAnalizeText_Click(object sender, EventArgs e)
         {
-
             string inputText = richTextBoxInput.Text;
             Analyzer analyzer = new Analyzer(inputText);
 
@@ -156,23 +146,65 @@ namespace TextAnalizer_v0._2
                 temp += item.Value;
                 temp += "\n";
             }
-
-
-
-
-
         }
-
         private void radioButtonRus_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonEng.Checked) SetupDataGridView(Language.English);
             else if (radioButtonRus.Checked) SetupDataGridView(Language.Russian);
         }
-
         private void radioButtonEng_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonEng.Checked) SetupDataGridView(Language.English);
             else if (radioButtonRus.Checked) SetupDataGridView(Language.Russian);
         }
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = fileName;
+            openFileDialog1.Filter = "Text files(*.txt)|*.txt|Word(*.doc)|*.doc";
+            
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                fileName = openFileDialog1.FileName;
+                richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.Default);
+                selectEncodingToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void uTF8ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.UTF8);
+        }
+
+        private void windows1251ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.GetEncoding(1251));
+        }
+
+        private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBoxInput.Text = File.ReadAllText(fileName, Encoding.Default);
+        }
+        private string fileName = "test.txt";
+
+        private void richTextBoxInput_TextChanged(object sender, EventArgs e)
+        {
+            string inputText = richTextBoxInput.Text;
+            Analyzer analyzer = new Analyzer(inputText);
+
+            if(analyzer.EuCounter() >= analyzer.RuCounter())
+            {
+                radioButtonEng.Checked = true;
+                radioButtonRus.Checked = false;
+            }
+            else
+            {
+                radioButtonEng.Checked = false;
+                radioButtonRus.Checked = true;
+            }
+        }
+
+
+        Analyzer analyzer;
     }
 }

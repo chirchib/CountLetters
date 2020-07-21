@@ -108,11 +108,11 @@ namespace CountLetters
             {
                 if (1040 <= Convert.ToInt32(Str[i]) && Convert.ToInt32(Str[i]) <= 1071)
                 {
-                    ProbabilityRuSymblos[Str[i]] = RuSymbols[Str[i]] * 100 / RuCounter();
+                    ProbabilityRuSymblos[Str[i]] = RuSymbols[Str[i]] * 100 / (double)RuCounter();
                 }
                 else if (65 <= Convert.ToInt32(Str[i]) && Convert.ToInt32(Str[i]) <= 90)
                 {
-                    ProbabilityEuSymblos[Str[i]] = EuSymbols[Str[i]] * 100 / EuCounter();
+                    ProbabilityEuSymblos[Str[i]] = EuSymbols[Str[i]] * 100 / (double)EuCounter();
                 }
             }
         }

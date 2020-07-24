@@ -25,7 +25,14 @@ namespace TextAnalizer_v0._2
 
     public partial class Form1 : Form
     {
-        public double average(double aver, int count, double add)
+        /// <summary>
+        /// Возвращает среднее значение последовательности из count элементов c aver среднем значением и нового элемента со значение add
+        /// </summary>
+        /// <param name="aver">Среднее значение последовательности</param>
+        /// <param name="count">Количество элементов последовательности</param>
+        /// <param name="add">Значение нового элемента</param>
+        /// <returns>Среднее значение последовательности</returns>
+        public double Average(double aver, int count, double add)
         {
             double temp = count / (double)(count + 1);
             return aver * temp + add / (count + 1);

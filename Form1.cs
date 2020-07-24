@@ -92,13 +92,13 @@ namespace TextAnalizer_v0._2
             Analyzer analyzer = new Analyzer(inputText);
 
             dataGridViewTextAlphabetInfo.Rows.Clear();
-            foreach (var item in analyzer.DisplayRuDictionary())
+            foreach (var item in analyzer.RuSymbols)
             {
                 string[] row = { string.Concat(item.Key), string.Concat(item.Value) };
                 dataGridViewTextAlphabetInfo.Rows.Add(row);
             }
             int index = 0;
-            foreach (var item in analyzer.DisplayProbabilityRuSymbols())
+            foreach (var item in analyzer.ProbabilityRuSymblos)
             {
                 
                 string prop = string.Concat(item.Value.ToString("N2"));
@@ -120,7 +120,7 @@ namespace TextAnalizer_v0._2
             dataGridViewTextAlphabetInfo.Rows.Clear();
 
 
-            foreach (var item in analyzer.DisplayEuDictionary())
+            foreach (var item in analyzer.EuSymbols)
             {
                 string[] row = { string.Concat(item.Key), string.Concat(item.Value)};
                 
@@ -128,7 +128,7 @@ namespace TextAnalizer_v0._2
             }
 
             int index = 0;
-            foreach (var item in analyzer.DisplayProbabilityEuSymbols())
+            foreach (var item in analyzer.ProbabilityEuSymblos)
             {
 
                 string prop = string.Concat(item.Value.ToString("N2"));

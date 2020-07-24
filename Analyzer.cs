@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -30,12 +30,12 @@ namespace CountLetters
             }
         }
 
-        private Dictionary<char, int> RuSymbols = new Dictionary<char, int>();
-        private Dictionary<char, int> EuSymbols = new Dictionary<char, int>();
-        private Dictionary<char, int> ExstraSymbols = new Dictionary<char, int>(); // цифры, символы, пробелы и тд
+        public Dictionary<char, int> RuSymbols { get; } = new Dictionary<char, int>();
+        public Dictionary<char, int> EuSymbols { get; } = new Dictionary<char, int>();     
+        public Dictionary<char, int> ExstraSymbols { get; } = new Dictionary<char, int>(); // цифры, символы, пробелы и тд
 
-        private Dictionary<char, double> ProbabilityRuSymblos = new Dictionary<char, double>();
-        private Dictionary<char, double> ProbabilityEuSymblos = new Dictionary<char, double>();
+        public Dictionary<char, double> ProbabilityRuSymblos { get; } = new Dictionary<char, double>();
+        public Dictionary<char, double> ProbabilityEuSymblos { get; }  = new Dictionary<char, double>();
 
         private string Str;
 
@@ -85,23 +85,6 @@ namespace CountLetters
             return RuCounter;
         }
 
-        // возвращает словарь с русскими символами
-        //TODO remove phrase "Display" from functions names
-        
-        public Dictionary<char, int> DisplayRuDictionary()
-        {
-            return RuSymbols;
-        }
-
-        //TODO Preferably change functions to property example: private Dictionary<char, int> EuSymbols {private set; public get}
-
-
-        // возвращает словарь с англ символами
-        public Dictionary<char, int> DisplayEuDictionary()
-        {
-            return EuSymbols;
-        }
-
         private void CounterProbability()
         {
             for (int i = 0; i < Str.Length; i++)
@@ -117,17 +100,5 @@ namespace CountLetters
             }
         }
 
-        // возвращает словарь с ру символами
-        //TODO fix return value DisplayProbabilityRuSymbols from int to double
-        public Dictionary<char,double> DisplayProbabilityRuSymbols()
-        {
-            return ProbabilityRuSymblos;
-        }
-
-        // возвращает словарь с англ символами
-        public Dictionary<char, double> DisplayProbabilityEuSymbols()
-        {
-            return ProbabilityEuSymblos;
-        }
     }
 }
